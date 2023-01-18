@@ -1,0 +1,27 @@
+.home {
+  padding: 20px 40px;
+  width: 800px;
+  border-right: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb;
+  height: 100vh;
+
+  &__refresh {
+    transition: transform 1s;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 640px) {
+    padding: 10px 20px;
+
+    
+  }
+}

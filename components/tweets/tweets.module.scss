@@ -1,0 +1,27 @@
+.tweets {
+  padding: 20px 40px;
+
+  &__search {
+    background: #f3f4f6;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__magnifying {
+    padding-left: 10px;
+  }
+  &__input {
+    background: #f3f4f6;
+    border-radius: 16px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+    .tweets {
+        display: none;
+    }
+}
