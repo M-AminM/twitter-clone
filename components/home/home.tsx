@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./home.module.scss";
 import Image from "next/image";
+import Tweets from "../tweets/tweets";
+import { TweetsData } from "@/data/tweets";
 
 const MainHome = () => {
   return (
@@ -48,6 +50,14 @@ const MainHome = () => {
           </div>
         </div>
       </div>
+
+      {TweetsData.map((tweet) => (
+        <Tweets
+          username={tweet.username}
+          userId={tweet.useId}
+          description={tweet.description}
+        />
+      ))}
     </section>
   );
 };

@@ -2,7 +2,7 @@ import Menu from "@/components/menu/menu";
 import MainHome from "@/components/home/home";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.scss";
-import Tweets from "@/components/tweets/tweets";
+import Tweets from "@/components/tweetsNews/tweets";
 
 const inter = Inter({ subsets: ["latin"] });
 

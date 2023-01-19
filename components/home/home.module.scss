@@ -3,6 +3,7 @@
   border-right: 1px solid #e5e7eb;
   border-left: 1px solid #e5e7eb;
   height: 100vh;
+  overflow: auto;
 
   &__refresh {
     transition: transform 0.3s;
