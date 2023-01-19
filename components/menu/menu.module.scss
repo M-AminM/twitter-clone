@@ -1,6 +1,6 @@
 .menu {
   padding: 20px 40px;
-  width: 250px;
+  // width: 250px;
 
   // height: 100vh;
 
@@ -15,13 +15,23 @@
   }
   &__links {
     display: flex;
-
+    // background: red;
     align-items: center;
     gap: 10px;
-    padding-bottom: 20px;
+    padding: 10px 20px;
     cursor: pointer;
     // width: 150px;
     // background: red;
+    transition: all .2s;
+
+    &:hover {
+      background: #f3f4f6;
+      border-radius: 20px;
+
+      .menu__link {
+        color: #58adee;
+      }
+    }
   }
 
   &__link {
@@ -33,7 +43,7 @@
 
 @media screen and (max-width: 640px) {
   .menu {
-    padding: 10px 20px;
+    padding: 10px 0px;
 
     &__link {
       display: none;
