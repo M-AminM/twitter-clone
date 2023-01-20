@@ -17,7 +17,7 @@ const Tweets: React.FC<Props> = ({ username, userId, description }) => {
           <div className={styles.tweets__title}>
             <h3>{username}</h3>
             <span>@{userId}</span>
-            <span>. 4 months ago</span>
+            <span className={styles.tweets__month}>. 4 months ago</span>
           </div>
 
           <p className={styles.tweets__des}>{description}</p>

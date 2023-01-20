@@ -1,10 +1,44 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./home.module.scss";
 import Image from "next/image";
 import Tweets from "../tweets/tweets";
 import { TweetsData } from "@/data/tweets";
+import { server } from "../../config";
 
 const MainHome = () => {
+  const [input, setInput] = useState<any>("");
+  const [tweets, setTweets] = useState([]);
+  const tweetsRef = useRef<any>();
+
+  useEffect(() => {
+    if (input) tweetsRef.current.style.background = "#08a8e2";
+    else tweetsRef.current.style.background = "#99def8";
+  }, [input]);
+
+  const sendData = async () => {
+    setInput("");
+    const response = await fetch("/api/tweets", {
+      method: "POST",
+      body: JSON.stringify({
+        tweet: input,
+        username: "tate",
+        userId: "cobratate",
+      }),
+    });
+
+
+  };
+
+  const getData = async () => {
+    return fetch(`${server}/api/tweets`)
+      .then((response) => response.json())
+      .then((data) => setTweets(data.tweets));
+  };
+
+  useEffect(() => {
+    getData();
+  }, [input]);
   return (
     <section className={styles.home}>
       <div className={styles.home__header}>
@@ -31,6 +65,8 @@ const MainHome = () => {
           <input
             className={styles.home__input}
             placeholder="What's happening?"
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
           />
 
           <div className={styles.home__upload}>
@@ -46,16 +82,23 @@ const MainHome = () => {
               <Image src="/assets/calendar.svg" alt="" width={20} height={20} />
               <Image src="/assets/location.svg" alt="" width={20} height={20} />
             </div>
-            <button className={styles.home__uploadButton}>Tweets</button>
+            <button
+              ref={tweetsRef}
+              className={styles.home__uploadButton}
+              onClick={sendData}
+            >
+              Tweets
+            </button>
           </div>
         </div>
       </div>
 
-      {TweetsData.map((tweet) => (
+      {tweets.map((tweet: any) => (
         <Tweets
           username={tweet.username}
-          userId={tweet.useId}
-          description={tweet.description}
+          userId={tweet.userId}
+          description={tweet.tweet}
+          key={tweet._id}
         />
       ))}
     </section>
