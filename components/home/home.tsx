@@ -26,8 +26,6 @@ const MainHome = () => {
         userId: "cobratate",
       }),
     });
-
-
   };
 
   const getData = async () => {
@@ -86,6 +84,7 @@ const MainHome = () => {
               ref={tweetsRef}
               className={styles.home__uploadButton}
               onClick={sendData}
+              disabled={!input}
             >
               Tweets
             </button>
