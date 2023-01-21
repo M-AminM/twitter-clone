@@ -1,0 +1,28 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+
+    &__title {
+        font-size: 20px;
+    }
+
+    &__google {
+        padding: 10px 20px;
+        outline: none;
+        border: 1px solid #9fa3af;
+        color: #9fa3af;
+        font-weight: 500;
+        background: #fff;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+      }
+}
