@@ -55,4 +55,10 @@
       border: 1px solid #9fa3af;
     }
   }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
