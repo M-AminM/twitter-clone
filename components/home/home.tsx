@@ -6,10 +6,16 @@ import Tweets from "../tweets/tweets";
 import { TweetsData } from "@/data/tweets";
 import { server } from "../../config";
 
-const MainHome = () => {
+interface Props {
+  session: any;
+}
+const MainHome: React.FC<Props> = ({ session }) => {
   const [input, setInput] = useState<any>("");
   const [tweets, setTweets] = useState([]);
   const tweetsRef = useRef<any>();
+
+  // console.log(session.user.name); server side :))
+  
 
   useEffect(() => {
     if (input) tweetsRef.current.style.background = "#08a8e2";
@@ -91,6 +97,8 @@ const MainHome = () => {
           </div>
         </div>
       </div>
+
+      {/* <h1>welcome {session.user?.name}</h1> */}
 
       {tweets.map((tweet: any) => (
         <Tweets

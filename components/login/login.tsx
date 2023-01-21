@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styles from "./login.module.scss";
 
@@ -12,8 +13,8 @@ const Login = () => {
       </div>
 
       <div className={styles.signin__buttons}>
-        <button className={styles.signin__buttons__login}>Log in</button>
-        <button className={styles.signin__buttons__signup}>Sign up</button>
+        <Link href="/login" className={styles.signin__buttons__login}>Log in</Link>
+        <Link href="/signup" className={styles.signin__buttons__signup}>Sign up</Link>
       </div>
     </div>
   );

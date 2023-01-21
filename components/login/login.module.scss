@@ -31,9 +31,11 @@
       font-weight: bold;
       border-radius: 16px;
       color: #fff;
-      //   height: 60px;
+      text-decoration: none;
       cursor: pointer;
+      font-size: 14px;
       width: 80px;
+      text-align: center;
     }
 
     &__signup {
@@ -43,8 +45,11 @@
       font-weight: bold;
       border: none;
       border-radius: 16px;
-      //   height: 60px;
+      text-decoration: none;
+      font-size: 14px;
       width: 80px;
+      color: #000;
+      text-align: center;
       cursor: pointer;
     }
   }
