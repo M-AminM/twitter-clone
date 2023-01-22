@@ -22,7 +22,7 @@
     cursor: pointer;
     // width: 150px;
     // background: red;
-    transition: all .2s;
+    transition: all 0.2s;
 
     &:hover {
       background: #f3f4f6;
@@ -39,6 +39,28 @@
     color: #000;
     font-size: 18px;
   }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__signout {
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 10px;
+    height: 30px;
+    transition: all 0.2s;
+    &:hover {
+      border-radius: 20px;
+      background: #000;
+      color: #fff;
+    }
+  }
 }
 
 @media screen and (max-width: 640px) {
@@ -47,6 +69,15 @@
 
     &__link {
       display: none;
+    }
+
+    &__head {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__signout {
+      font-size: 12px;
     }
   }
 

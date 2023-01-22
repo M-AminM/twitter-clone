@@ -34,22 +34,37 @@ const Entry: React.FC<Props> = ({ title, buttonText }) => {
     reset();
     if (buttonText === "Sign in") {
       console.log(data);
-      
+
       const result = await signIn("credentials", {
         redirect: false,
         email: data.input,
         password: data.password,
       });
 
-      console.log(result);
-      
+      if (result?.error === null) {
+        window.location.href = "/";
+      }
     }
+
     if (buttonText === "Sign up") {
-      const res = fetch("/api/auth/signup", {
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
         body: JSON.stringify({
           data,
         }),
+      }).then(async (response) => {
+        console.log(response);
+
+        if (response.ok) {
+          const result = await signIn("credentials", {
+            redirect: false,
+            email: data.email,
+            password: data.password,
+          });
+
+        } else {
+          console.log("Already created");
+        }
       });
     }
   };

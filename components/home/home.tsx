@@ -46,6 +46,8 @@ const MainHome: React.FC<Props> = ({ session }) => {
   useEffect(() => {
     getData();
   }, [input]);
+
+  const reversedTweets = [...tweets].reverse();
   return (
     <section className={styles.home}>
       <div className={styles.home__header}>
@@ -103,7 +105,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
 
       {/* <h1>welcome {session.user?.name}</h1> */}
 
-      {tweets.map((tweet: any) => (
+      {reversedTweets.map((tweet: any) => (
         <Tweets
           username={tweet.username}
           userId={tweet.userId}

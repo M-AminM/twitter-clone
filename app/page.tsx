@@ -11,16 +11,16 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { data: session } = useSession();
-
   // console.log(session);
   
 
   return (
     <main className={styles.main}>
-      <Menu />
+      <Menu session={session} />
       <MainHome session={session} />
       <Tweets />
-      <Login />
+      {!session && <Login />}
+      
     </main>
   );
 }
