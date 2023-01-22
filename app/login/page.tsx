@@ -14,10 +14,7 @@ const Login = () => {
         <Image src="/assets/google.png " alt="google" width={25} height={25} />
         Sign in with Google
       </button>
-      <Entry
-        title="Sign in to Twitter"
-        buttonText="Sign in"
-      />
+      <Entry title="Sign in to Twitter" buttonText="Sign in" />
     </div>
   );
 };
