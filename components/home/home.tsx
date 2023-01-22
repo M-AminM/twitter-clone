@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./home.module.scss";
 import Image from "next/image";
@@ -14,8 +14,11 @@ const MainHome: React.FC<Props> = ({ session }) => {
   const [tweets, setTweets] = useState([]);
   const tweetsRef = useRef<any>();
 
+  // console.log(session.user);
+  let data = session?.user?.email;
+
+
   // console.log(session.user.name); server side :))
-  
 
   useEffect(() => {
     if (input) tweetsRef.current.style.background = "#08a8e2";
@@ -28,8 +31,8 @@ const MainHome: React.FC<Props> = ({ session }) => {
       method: "POST",
       body: JSON.stringify({
         tweet: input,
-        username: "tate",
-        userId: "cobratate",
+        username: data?.username,
+        userId: data?.userId,
       }),
     });
   };

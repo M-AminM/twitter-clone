@@ -17,7 +17,7 @@ const Menu = () => {
         />
         <div className={styles.menu__data}>
           {menuData.map((data) => (
-            <div className={styles.menu__links}>
+            <div className={styles.menu__links} key={data.id}>
               <Image src={data.icon} alt={data.name} width={30} height={25} />
               <Link className={styles.menu__link} href="/">
                 {data.name}

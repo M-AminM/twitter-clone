@@ -7,6 +7,8 @@ import Entry from "@/components/entry/entry";
 
 const Signup = () => {
   const { data: session }: any = useSession();
+  console.log(session);
+  
   return (
     <div className={styles.login}>
       <button onClick={() => signIn()} className={styles.login__google}>

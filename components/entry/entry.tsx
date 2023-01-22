@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./entry.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { getSession, signIn } from "next-auth/react";
 
 interface Props {
   title: string;
@@ -8,10 +9,11 @@ interface Props {
 }
 
 type Inputs = {
-  phone: string;
+  id: string;
   email: string;
   username: string;
   password: string;
+  input?: string;
 };
 
 type FromInputs = {
@@ -28,9 +30,19 @@ const Entry: React.FC<Props> = ({ title, buttonText }) => {
     reset,
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     reset();
     if (buttonText === "Sign in") {
+      console.log(data);
+      
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: data.input,
+        password: data.password,
+      });
+
+      console.log(result);
+      
     }
     if (buttonText === "Sign up") {
       const res = fetch("/api/auth/signup", {
@@ -43,14 +55,14 @@ const Entry: React.FC<Props> = ({ title, buttonText }) => {
   };
 
   const signupInput: FromInputs = [
-    { placeholder: "phone", type: "text", id: 1 },
+    { placeholder: "id", type: "text", id: 1 },
     { placeholder: "email", type: "email", id: 2 },
     { placeholder: "username", type: "text", id: 3 },
     { placeholder: "password", type: "password", id: 4 },
   ];
 
   const loginInput: FromInputs = [
-    { placeholder: "phone-email-username", type: "text", id: 1 },
+    { placeholder: "input", type: "text", id: 1 },
     { placeholder: "password", type: "password", id: 2 },
   ];
 
