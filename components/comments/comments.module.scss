@@ -1,0 +1,37 @@
+.comments {
+  display: flex;
+
+  flex-direction: column;
+  padding: 20px 40px;
+  &__comment {
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+  }
+  &__input {
+    border: 1px solid #c1c5cd;
+    outline: none;
+    padding: 5px;
+  }
+
+  &__submit {
+    background: #08A8E2;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  &__detail {
+    display: flex;
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 640px) {
+    padding: 10px 20px;
+  }
+
+}
