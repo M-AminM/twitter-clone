@@ -10,6 +10,7 @@ interface Props {
   description: string;
   mainUserId: string;
   id: string;
+  date: string;
 }
 
 const Tweets: React.FC<Props> = ({
@@ -18,19 +19,16 @@ const Tweets: React.FC<Props> = ({
   description,
   mainUserId,
   id,
+  date,
 }) => {
+
   const [heart, setHeart] = useState(false);
   const [comments, setComments] = useState(false);
   const [comment, setComment] = useState("");
   const [data, setData] = useState([]);
+  
 
   const commentHandler = async () => {
-    // console.log(12);
-
-
-
-    console.log(filterComment);
-
     setComments(!comments);
   };
 
@@ -45,6 +43,31 @@ const Tweets: React.FC<Props> = ({
   }, [comment]);
 
   const filterComment = data.filter((comment: any) => comment.id === id);
+
+
+  
+  function padTo2Digits(num: number) {
+    return num.toString().padStart(2, "0");
+  }
+
+  function convertMsToTime(milliseconds: number) {
+    let seconds = Math.floor(milliseconds / 1000);
+    let minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+
+    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+      seconds
+    )}`;
+  }
+
+  console.log(new Date(date));
+  console.log(new Date());
+  console.log(new Date().valueOf() - new Date(date).valueOf());
+  console.log(convertMsToTime(new Date().valueOf() - new Date(date).valueOf()));
+  const time = convertMsToTime(new Date().valueOf() - new Date(date).valueOf());
   return (
     <>
       <div className={styles.tweets}>
@@ -53,7 +76,7 @@ const Tweets: React.FC<Props> = ({
           <div className={styles.tweets__title}>
             <h3>{username}</h3>
             <span>@{userId}</span>
-            <span className={styles.tweets__month}>. 4 months ago</span>
+            <span className={styles.tweets__month}>{time}</span>
           </div>
 
           <p className={styles.tweets__des}>{description}</p>
@@ -68,7 +91,9 @@ const Tweets: React.FC<Props> = ({
             height={20}
             onClick={commentHandler}
           />
-          <span className={styles.tweets__comments__number}>{filterComment.length}</span>
+          <span className={styles.tweets__comments__number}>
+            {filterComment.length}
+          </span>
         </div>
         <Image src="/assets/arrow.svg" alt="arrow" width={20} height={20} />
         <svg
@@ -101,6 +126,7 @@ const Tweets: React.FC<Props> = ({
           data={filterComment}
           comment={comment}
           setComment={setComment}
+          date={date}
         />
       )}
     </>

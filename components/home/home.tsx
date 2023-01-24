@@ -17,7 +17,6 @@ const MainHome: React.FC<Props> = ({ session }) => {
   // console.log(session.user);
   let data = session?.user?.email;
 
-
   // console.log(session.user.name); server side :))
 
   useEffect(() => {
@@ -46,15 +45,18 @@ const MainHome: React.FC<Props> = ({ session }) => {
   useEffect(() => {
     getData();
   }, [input]);
-  
 
-  
-  
   const reversedTweets = [...tweets].reverse();
+
+  // console.log(reversedTweets);
+  
   return (
     <section className={styles.home}>
       <div className={styles.home__header}>
-        <h1>Home</h1>
+        <div>
+          <h1>Home</h1>
+          <p>{data?.userId}</p>
+        </div>
         <Image
           src="/assets/refresh.svg"
           alt="refresh"
@@ -116,6 +118,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
           mainUserId={data?.userId}
           key={tweet._id}
           id={tweet._id}
+          date={tweet.date}
         />
       ))}
     </section>

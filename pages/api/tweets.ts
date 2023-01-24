@@ -10,6 +10,7 @@ const handler = async (req: any, res: any) => {
       tweet: tweet,
       username: username,
       userId: userId,
+      date: new Date(),
     });
   }
 
