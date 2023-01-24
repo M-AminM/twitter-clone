@@ -13,6 +13,13 @@ interface Props {
   date: string;
 }
 
+type filterData = {
+  comment: string;
+  id: string;
+  mainUserId: string;
+  _id: string;
+};
+
 const Tweets: React.FC<Props> = ({
   username,
   userId,
@@ -21,10 +28,10 @@ const Tweets: React.FC<Props> = ({
   id,
   date,
 }) => {
-  const [heart, setHeart] = useState(false);
-  const [comments, setComments] = useState(false);
-  const [comment, setComment] = useState("");
-  const [data, setData] = useState([]);
+  const [heart, setHeart] = useState<boolean>(false);
+  const [comments, setComments] = useState<boolean>(false);
+  const [comment, setComment] = useState<string>("");
+  const [data, setData] = useState<filterData[]>([]);
 
   const commentHandler = async () => {
     setComments(!comments);
@@ -40,7 +47,7 @@ const Tweets: React.FC<Props> = ({
     getData();
   }, [comment]);
 
-  const filterComment = data.filter((comment: any) => comment.id === id);
+  const filterComment = data.filter((comment: filterData) => comment.id === id);
 
   function padTo2Digits(num: number) {
     return num.toString().padStart(2, "0");

@@ -1,10 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./comments.module.scss";
 
+type data = {
+  comment: string;
+  id: string;
+  mainUserId: string;
+  _id: string;
+};
+
 interface Props {
   mainUserId: string;
   id: string;
-  data: any;
+  data: data[];
   comment: string;
   setComment: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -16,7 +23,6 @@ const Comments: React.FC<Props> = ({
   comment,
   setComment,
 }) => {
-  
   const commentHandler = () => {
     const res = fetch("/api/comments/comment", {
       method: "POST",

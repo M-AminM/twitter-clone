@@ -8,8 +8,17 @@ import { server } from "../../config";
 interface Props {
   session: any;
 }
+
+type Tweets = {
+  date: string;
+  tweet: string;
+  userId: string;
+  username: string;
+  _id: string;
+};
+
 const MainHome: React.FC<Props> = ({ session }) => {
-  const [input, setInput] = useState<any>("");
+  const [input, setInput] = useState<string>("");
   const [tweets, setTweets] = useState([]);
   const tweetsRef = useRef<any>();
   let data = session?.user?.email;
@@ -42,7 +51,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
   }, [input]);
 
   const reversedTweets = [...tweets].reverse();
-  
+
   return (
     <section className={styles.home}>
       <div className={styles.home__header}>
@@ -101,7 +110,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
         </div>
       </div>
 
-      {reversedTweets.map((tweet: any) => (
+      {reversedTweets.map((tweet: Tweets) => (
         <Tweets
           username={tweet.username}
           userId={tweet.userId}
