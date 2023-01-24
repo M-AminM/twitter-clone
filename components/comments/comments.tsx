@@ -1,29 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./comments.module.scss";
 
 interface Props {
-  username: string;
-  userId: string;
-  description: string;
-  mainUserId: string; //اونی که login کردیم هست
+  mainUserId: string;
   id: string;
   data: any;
   comment: string;
   setComment: React.Dispatch<React.SetStateAction<string>>;
-  date: string;
 }
 
 const Comments: React.FC<Props> = ({
-  username,
-  userId,
-  description,
   mainUserId,
   id,
   data,
   comment,
   setComment,
-  date,
 }) => {
+  
   const commentHandler = () => {
     const res = fetch("/api/comments/comment", {
       method: "POST",
@@ -38,13 +31,6 @@ const Comments: React.FC<Props> = ({
     if (comment) submitRef.current.style.background = "#08a8e2";
     else submitRef.current.style.background = "#99def8";
   }, [comment]);
-
-
-  // const d1 = new Date();
-  // console.log(d1);
-  // console.log(date);
-
-  // const result =  - d1.getTime();
 
   return (
     <div className={styles.comments}>

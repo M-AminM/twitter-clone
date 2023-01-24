@@ -1,5 +1,4 @@
 "use client";
-
 import "./globals.scss";
 import { SessionProvider } from "next-auth/react";
 
@@ -10,10 +9,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <SessionProvider>
         <body>{children}</body>

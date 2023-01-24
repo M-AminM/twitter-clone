@@ -1,18 +1,13 @@
 "use client";
 import Menu from "@/components/menu/menu";
 import MainHome from "@/components/home/home";
-import { Inter } from "@next/font/google";
 import styles from "./page.module.scss";
 import Tweets from "@/components/tweetsNews/tweets";
 import Login from "@/components/login/login";
-import { useSession, signIn, signOut } from "next-auth/react";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
-  // console.log(session);
-  
 
   return (
     <main className={styles.main}>
@@ -20,7 +15,6 @@ export default function Home() {
       <MainHome session={session} />
       <Tweets />
       {!session && <Login />}
-      
     </main>
   );
 }

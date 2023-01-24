@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./home.module.scss";
 import Image from "next/image";
 import Tweets from "../tweets/tweets";
-import { TweetsData } from "@/data/tweets";
 import { server } from "../../config";
 
 interface Props {
@@ -13,11 +12,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
   const [input, setInput] = useState<any>("");
   const [tweets, setTweets] = useState([]);
   const tweetsRef = useRef<any>();
-
-  // console.log(session.user);
   let data = session?.user?.email;
-
-  // console.log(session.user.name); server side :))
 
   useEffect(() => {
     if (input) tweetsRef.current.style.background = "#08a8e2";
@@ -47,8 +42,6 @@ const MainHome: React.FC<Props> = ({ session }) => {
   }, [input]);
 
   const reversedTweets = [...tweets].reverse();
-
-  // console.log(reversedTweets);
   
   return (
     <section className={styles.home}>
@@ -107,8 +100,6 @@ const MainHome: React.FC<Props> = ({ session }) => {
           </div>
         </div>
       </div>
-
-      {/* <h1>welcome {session.user?.name}</h1> */}
 
       {reversedTweets.map((tweet: any) => (
         <Tweets

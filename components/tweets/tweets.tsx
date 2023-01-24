@@ -21,12 +21,10 @@ const Tweets: React.FC<Props> = ({
   id,
   date,
 }) => {
-
   const [heart, setHeart] = useState(false);
   const [comments, setComments] = useState(false);
   const [comment, setComment] = useState("");
   const [data, setData] = useState([]);
-  
 
   const commentHandler = async () => {
     setComments(!comments);
@@ -44,8 +42,6 @@ const Tweets: React.FC<Props> = ({
 
   const filterComment = data.filter((comment: any) => comment.id === id);
 
-
-  
   function padTo2Digits(num: number) {
     return num.toString().padStart(2, "0");
   }
@@ -62,12 +58,8 @@ const Tweets: React.FC<Props> = ({
       seconds
     )}`;
   }
-
-  console.log(new Date(date));
-  console.log(new Date());
-  console.log(new Date().valueOf() - new Date(date).valueOf());
-  console.log(convertMsToTime(new Date().valueOf() - new Date(date).valueOf()));
   const time = convertMsToTime(new Date().valueOf() - new Date(date).valueOf());
+
   return (
     <>
       <div className={styles.tweets}>
@@ -118,15 +110,11 @@ const Tweets: React.FC<Props> = ({
       </div>
       {comments && (
         <Comments
-          username={username}
-          userId={userId}
-          description={description}
           mainUserId={mainUserId}
           id={id}
           data={filterComment}
           comment={comment}
           setComment={setComment}
-          date={date}
         />
       )}
     </>

@@ -36,7 +36,7 @@ const Menu: React.FC<Props> = ({ session }) => {
               </Link>
             </div>
           ))}
-        </div>{" "}
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./entry.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { getSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 interface Props {
   title: string;
