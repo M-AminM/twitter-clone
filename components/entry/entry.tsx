@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./entry.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -62,8 +63,9 @@ const Entry: React.FC<Props> = ({ title, buttonText }) => {
             password: data.password,
           });
 
+          alert("Successful");
         } else {
-          console.log("Already created");
+          alert("Already created");
         }
       });
     }
@@ -99,6 +101,13 @@ const Entry: React.FC<Props> = ({ title, buttonText }) => {
         )}
         <button className={styles.login__button}>{buttonText}</button>
       </form>
+      <Link
+        href="/"
+        style={{ textDecoration: "none", textAlign: "center", fontSize: "14px" }}
+        className={styles.login__button}
+      >
+        Home
+      </Link>
     </>
   );
 };

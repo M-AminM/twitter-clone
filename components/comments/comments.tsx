@@ -14,6 +14,7 @@ interface Props {
   data: data[];
   comment: string;
   setComment: React.Dispatch<React.SetStateAction<string>>;
+  session: any;
 }
 
 const Comments: React.FC<Props> = ({
@@ -22,13 +23,18 @@ const Comments: React.FC<Props> = ({
   data,
   comment,
   setComment,
+  session,
 }) => {
   const commentHandler = () => {
-    const res = fetch("/api/comments/comment", {
-      method: "POST",
-      body: JSON.stringify({ comment, mainUserId, id }),
-    });
-    setComment("");
+    if (session) {
+      const res = fetch("/api/comments/comment", {
+        method: "POST",
+        body: JSON.stringify({ comment, mainUserId, id }),
+      });
+      setComment("");
+    } else {
+      alert("You should login first !");
+    }
   };
 
   const submitRef = useRef<any>();

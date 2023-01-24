@@ -29,15 +29,19 @@ const MainHome: React.FC<Props> = ({ session }) => {
   }, [input]);
 
   const sendData = async () => {
-    setInput("");
-    const response = await fetch("/api/tweets", {
-      method: "POST",
-      body: JSON.stringify({
-        tweet: input,
-        username: data?.username,
-        userId: data?.userId,
-      }),
-    });
+    if (session) {
+      setInput("");
+      const response = await fetch("/api/tweets", {
+        method: "POST",
+        body: JSON.stringify({
+          tweet: input,
+          username: data?.username,
+          userId: data?.userId,
+        }),
+      });
+    } else {
+      alert("You should login first !");
+    }
   };
 
   const getData = async () => {
@@ -119,6 +123,7 @@ const MainHome: React.FC<Props> = ({ session }) => {
           key={tweet._id}
           id={tweet._id}
           date={tweet.date}
+          session={session}
         />
       ))}
     </section>

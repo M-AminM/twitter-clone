@@ -11,6 +11,7 @@ interface Props {
   mainUserId: string;
   id: string;
   date: string;
+  session: any;
 }
 
 type filterData = {
@@ -27,6 +28,7 @@ const Tweets: React.FC<Props> = ({
   mainUserId,
   id,
   date,
+  session,
 }) => {
   const [heart, setHeart] = useState<boolean>(false);
   const [comments, setComments] = useState<boolean>(false);
@@ -122,6 +124,7 @@ const Tweets: React.FC<Props> = ({
           data={filterComment}
           comment={comment}
           setComment={setComment}
+          session={session}
         />
       )}
     </>
